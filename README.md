@@ -1,5 +1,7 @@
 # Micronaut 
 
+This fork of Micronaut serves the sole purpose to showcase the Java on Truffle HotSwap Plugin API. The HotSwap Plugin API is used here in a simple way to enable reloading of Micronaut applications when running on Java on Truffle. The plugin implementation is kept simple to highlight the API usage, so currently it's quite coarse-grained in the sense that it reloads the Application context on certain changes. A more fine-grained plugin implementation would improve the reloading performance by enabling more precise reaction to specific changes. However, the implementation here is fully functional and it already provides a significant boost to developer productivity by offering extensive reloading capabilities.
+
 [![Build Status](https://github.com/micronaut-projects/micronaut-core/workflows/Java%20CI/badge.svg)](https://github.com/micronaut-projects/micronaut-core/actions)
 
 [Micronaut](https://micronaut.io) is a modern, JVM-based, full stack Java framework designed for building modular, easily testable JVM applications with support for Java, Kotlin and the Groovy language.
