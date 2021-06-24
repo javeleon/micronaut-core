@@ -1,4 +1,6 @@
 dependencies {
+    implementation 'org.graalvm.espresso:hotswap:21.2.0'
+
     annotationProcessor project(":inject-java")
     annotationProcessor project(":graal")
     api project(':inject')
