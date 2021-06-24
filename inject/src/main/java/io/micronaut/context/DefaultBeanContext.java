@@ -313,6 +313,20 @@ public class DefaultBeanContext implements BeanContext {
     }
 
     @Override
+    public void flushBeanCaches() {
+        singlesInCreation.clear();
+        singletonObjects.clear();
+        beanCandidateCache.clear();
+        beanConcreteCandidateCache.clear();
+        beanConfigurations.clear();
+        beanDefinitionsClasses.clear();
+        beanIndex.clear();
+        beanCreationEventListeners.clear();
+        initializedObjectsByType.clear();
+        containsBeanCache.clear();
+    }
+
+    @Override
     @NonNull
     public AnnotationMetadata resolveMetadata(Class<?> type) {
         if (type == null) {

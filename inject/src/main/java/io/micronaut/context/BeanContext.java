@@ -205,6 +205,10 @@ public interface BeanContext extends
         return (BeanContext) BeanDefinitionRegistry.super.registerSingleton(singleton, inject);
     }
 
+    default void flushBeanCaches() {
+
+    }
+
     /**
      * Run the {@link BeanContext}. This method will instantiate a new {@link BeanContext} and call {@link #start()}.
      *
