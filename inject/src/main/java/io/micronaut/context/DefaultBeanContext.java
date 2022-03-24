@@ -4390,4 +4390,20 @@ public class DefaultBeanContext implements InitializableBeanContext {
             return (T) singlesInCreation.get(beanIdentifier);
         }
     }
+    @Override
+    public void flushBeanCaches() {
+        singlesInCreation.clear();
+        singletonObjects.clear();
+        beanCandidateCache.clear();
+        beanConcreteCandidateCache.clear();
+        beanConfigurations.clear();
+        beanDefinitionsClasses.clear();
+        beanIndex.clear();
+        initializedObjectsByType.clear();
+        containsBeanCache.clear();
+        beanValidator = null;
+        beanCreationEventListeners = null;
+        beanDefinitionReferences = null;
+        beanConfigurationsList = null;
+    }
 }

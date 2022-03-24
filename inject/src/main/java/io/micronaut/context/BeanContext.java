@@ -340,4 +340,8 @@ public interface BeanContext extends
     BeanContext build(ClassLoader classLoader) {
         return new DefaultBeanContext(classLoader);
     }
+
+    default void flushBeanCaches() {
+
+    }
 }

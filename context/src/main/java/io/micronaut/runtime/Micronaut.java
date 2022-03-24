@@ -15,6 +15,7 @@
  */
 package io.micronaut.runtime;
 
+import io.micronaut.context.DefaultApplicationContext;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.annotation.Nullable;
 import io.micronaut.context.ApplicationContext;
@@ -39,6 +40,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
+import com.oracle.truffle.espresso.hotswap.EspressoHotSwap;
+
 /**
  * <p>Main entry point for running a Micronaut application.</p>
  *
@@ -47,7 +50,7 @@ import java.util.function.Function;
  */
 public class Micronaut extends DefaultApplicationContextBuilder implements ApplicationContextBuilder  {
     private static final String BANNER_NAME = "micronaut-banner.txt";
-    private static final Logger LOG = LoggerFactory.getLogger(Micronaut.class);
+    static final Logger LOG = LoggerFactory.getLogger(Micronaut.class);
     private static final String SHUTDOWN_MONITOR_THREAD = "micronaut-shutdown-monitor-thread";
 
     private Map<Class<? extends Throwable>, Function<Throwable, Integer>> exitHandlers = new LinkedHashMap<>();
@@ -314,10 +317,12 @@ public class Micronaut extends DefaultApplicationContextBuilder implements Appli
      * @return The {@link ApplicationContext}
      */
     public static ApplicationContext run(Class[] classes, String... args) {
-        return new Micronaut()
-            .classes(classes)
-            .args(args)
-            .start();
+        ApplicationContext context = new Micronaut()
+                .classes(classes)
+                .args(args)
+                .start();
+        EspressoHotSwap.registerPlugin(new MicronautHotSwapPlugin(context));
+        return context;
     }
 
     /**
