@@ -15,7 +15,7 @@ dependencies {
     testAnnotationProcessor project(":inject-java")
     testImplementation project(":core-reactive")
     testImplementation project(":inject-java-test")
-    implementation 'org.graalvm.espresso:hotswap:22.0.0'
+    implementation 'org.graalvm.espresso:hotswap:22.0.0.2'
 }
 
 spotless {
